@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema(
         },
         sex: {
             type: String,
-            enum: ['male', 'female'],
+            enum: {
+                values: ['male', 'female'],
+                message: "{VALUE} 不符合預設值",
+            },
             required: [true, '【性別】必填'],
             trim: true,
         },
@@ -21,6 +24,7 @@ const userSchema = new mongoose.Schema(
         password: {
             type: String,
             required: [true, '【密碼】必填'],
+            minlength: 8,
             select: false,
             trim: true,
         },
