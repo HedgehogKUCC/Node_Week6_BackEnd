@@ -7,10 +7,16 @@ dotenv.config(
     }
 )
 
-DB = process.env.MongoDB.replace(
-    '<password>',
-    process.env.MongoDB_Password,
-)
+let DB = '';
+
+if ( process.env.NODE_ENV === 'development' ) {
+    DB = process.env.DevMongoDB;
+} else {
+    DB = process.env.MongoDB.replace(
+        '<password>',
+        process.env.MongoDB_Password,
+    )
+}
 
 mongoose
     .connect(DB)
