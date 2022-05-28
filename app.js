@@ -4,8 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const signupRouter = require('./routes/signup');
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
@@ -29,7 +27,6 @@ process.on('uncaughtException', err => {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/signup', signupRouter);
 app.use('/posts', postsRouter);
 
 app.use((req, res, next) => {
