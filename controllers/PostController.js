@@ -1,7 +1,7 @@
 const PostModel = require('../models/Post');
 const UserModel = require('../models/User');
-const appError = require('../service/appError');
-const success = require('../service/responseSuccess');
+const appError = require('../utils/appError');
+const success = require('../services/responseSuccess');
 
 module.exports = {
     async getPosts(req, res, next) {
