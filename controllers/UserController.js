@@ -107,5 +107,39 @@ module.exports = {
         }
 
         generateJWT(user, res);
+    },
+    async updateUserPassword(req, res, next) {
+        const data = req.body;
+        const { password, confirmPassword } = data;
+
+        if ( !password.trim() || !confirmPassword.trim() ) {
+            return appError('有欄位未填寫', next);
+        }
+
+        if ( !validator.isLength(password, { min: 8 }) ) {
+            return appError('【密碼】需 8 碼以上', next);
+        }
+
+        if ( !validator.isStrongPassword(password) ) {
+            return appError('【密碼】需包含各一個大小寫英文、數字和符號', next);
+        }
+
+        if ( validator.matches(password, /['<>]/g) ) {
+            return appError("【密碼】請勿使用 ' < >", next);
+        }
+
+        if ( password !== confirmPassword ) {
+            return appError('【密碼】不一致', next);
+        }
+
+        const user = await UserModel.findById(req.user._id).select('+password');
+        const isPasswordSame = await bcrypt.compare(password, user.password);
+        if ( isPasswordSame ) {
+            return appError('請重新設置密碼', next);
+        }
+
+        data.password = await bcrypt.hash(data.password, 12);
+        await UserModel.findByIdAndUpdate(req.user._id, { password: data.password });
+        success(res, '密碼重設完成');
     }
 }
