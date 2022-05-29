@@ -139,5 +139,43 @@ module.exports = {
         data.password = await bcrypt.hash(data.password, 12);
         await UserModel.findByIdAndUpdate(req.user._id, { password: data.password });
         success(res, '密碼重設完成');
+    },
+    async updateUserInfo(req, res, next) {
+        const data = req.body;
+        const { avatar, name, sex } = data;
+
+        const regexAvatar = /^https/g;
+
+        if ( !avatar.trim() ) {
+            return appError('【大頭照】必填', next);
+        }
+
+        if ( !regexAvatar.test(avatar) ) {
+            return appError('【大頭照】網址開頭需為 https', next);
+        }
+
+        if ( !name.trim() ) {
+            return appError('【暱稱】必填', next);
+        }
+
+        if ( !validator.isLength(name, { min: 2 }) ) {
+            return appError('【暱稱】至少 2 個字元以上', next);
+        }
+
+        if ( !sex.trim() ) {
+            return appError('【性別】必填', next);
+        }
+
+        if ( sex !== 'male' && sex !== 'female' ) {
+            return appError('【性別】必填', next);
+        }
+
+        const newUserInfo = await UserModel.findByIdAndUpdate(req.user._id, {
+            avatar,
+            name,
+            sex,
+            updatedAt: Date.now(),
+        }, { returnDocument: 'after' });
+        success(res, newUserInfo);
     }
 }
