@@ -80,6 +80,14 @@ app.use((err, req, res, next) => {
         err.isOperational = true;
         return resErrorProd(err, res);
     }
+
+    if ( err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError' ) {
+        err.message = '請重新登入帳號';
+        err.statusCode = 401;
+        err.isOperational = true;
+        return resErrorProd(err, res);
+    }
+
     resErrorProd(err, res);
 });
 
