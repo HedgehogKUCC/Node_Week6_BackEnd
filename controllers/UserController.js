@@ -77,5 +77,35 @@ module.exports = {
         const user = await UserModel.create(data);
 
         generateJWT(user, res, 201);
+    },
+    async searchUserLogin(req, res, next) {
+        const data = req.body;
+        const { email, password } = data;
+
+        if ( !email.trim() ) {
+            return appError('【帳號】必填', next);
+        }
+
+        if ( !password.trim() ) {
+            return appError('【密碼】必填', next);
+        }
+
+        if ( !validator.isEmail(email) ) {
+            return appError('請輸入正確信箱格式', next);
+        }
+
+        data.password = data.password.replace(/['<>]/g, '');
+
+        const user = await UserModel.findOne({ email }).select('+password');
+        if ( !user ) {
+            return appError('帳號或密碼錯誤，請重新輸入！', next);
+        }
+
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if ( !isPasswordCorrect ) {
+            return appError('帳號或密碼錯誤，請重新輸入！', next);
+        }
+
+        generateJWT(user, res);
     }
 }
