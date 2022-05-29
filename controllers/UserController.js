@@ -9,9 +9,7 @@ const generateJWT = require('../utils/generateJWT');
 
 module.exports = {
     async getUser(req, res, next) {
-        const { id } = req.params;
-        const data = await UserModel.findById(id, 'name avatar');
-        success(res, data);
+        success(res, req.user);
     },
     async insertUser(req, res, next) {
         const data = req.body;
