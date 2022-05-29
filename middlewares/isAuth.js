@@ -30,5 +30,9 @@ module.exports = handleErrorAsync(async (req, res, next) => {
     });
 
     req.user = await UserModel.findById(decodeJWT.id);
+    if ( !req.user ) {
+        return  appError('請登入帳號', next, 401);
+    }
+
     next();
 });
