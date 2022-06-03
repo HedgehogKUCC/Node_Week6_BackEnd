@@ -90,6 +90,12 @@ app.use((err, req, res, next) => {
         return resErrorProd(err, res);
     }
 
+    if ( err.name === 'MulterError' ) {
+        err.statusCode = 400;
+        err.isOperational = true;
+        return resErrorProd(err, res);
+    }
+
     resErrorProd(err, res);
 });
 
