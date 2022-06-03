@@ -72,6 +72,11 @@ const resErrorDev = (err, res) => {
 app.use((err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
 
+    if ( err.message.indexOf('圖片檔案格式') !== -1 ) {
+        err.statusCode = 400;
+        err.isOperational = true;
+    }
+
     if ( process.env.NODE_ENV === 'development' ) {
         return resErrorDev(err, res);
     }
