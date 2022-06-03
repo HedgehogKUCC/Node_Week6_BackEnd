@@ -1027,60 +1027,13 @@
 							"name": "local",
 							"item": [
 								{
-									"name": "新增貼文",
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\",\n    \"content\": \"1234\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "http://localhost:3005/posts",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "3005",
-											"path": [
-												"posts"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "取得貼文",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "http://localhost:3005/posts",
-											"protocol": "http",
-											"host": [
-												"localhost"
-											],
-											"port": "3005",
-											"path": [
-												"posts"
-											]
-										}
-									},
-									"response": []
-								},
-								{
 									"name": "使用者註冊",
 									"request": {
 										"method": "POST",
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"name\": \"KUCC\",\n    \"sex\": \"male\",\n    \"email\": \"kucc@kucc.com.tw\",\n    \"password\": \"111111\"\n}",
+											"raw": "{\n    \"name\": \"Kucc\",\n    \"sex\": \"male\",\n    \"email\": \"kucc@kucc.com.tw\",\n    \"password\": \"111111\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1088,13 +1041,14 @@
 											}
 										},
 										"url": {
-											"raw": "http://localhost:3005/signup",
+											"raw": "http://localhost:3005/users/signup",
 											"protocol": "http",
 											"host": [
 												"localhost"
 											],
 											"port": "3005",
 											"path": [
+												"users",
 												"signup"
 											]
 										}
@@ -1120,12 +1074,196 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "取得貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3005/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\",\n    \"content\": \"111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除單筆貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除全部貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新貼文",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\",\n    \"content\": 0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts/62997260c608bf71bc3ab427",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts",
+												"62997260c608bf71bc3ab427"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
 						{
 							"name": "heroku",
 							"item": [
+								{
+									"name": "使用者註冊",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"KUCC\",\n    \"sex\": \"male\",\n    \"email\": \"kucc@kucc.com.tw\",\n    \"password\": \"111111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/users/signup",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"signup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得使用者資訊",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/users/628077f83a15d4d2b326993c",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"628077f83a15d4d2b326993c"
+											]
+										}
+									},
+									"response": []
+								},
 								{
 									"name": "取得貼文",
 									"request": {
@@ -1153,7 +1291,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\",\n    \"content\": \"1234\"\n}",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\",\n    \"content\": \"111\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1176,13 +1314,13 @@
 									"response": []
 								},
 								{
-									"name": "使用者註冊",
+									"name": "刪除單筆貼文",
 									"request": {
-										"method": "POST",
+										"method": "DELETE",
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"name\": \"KUCC\",\n    \"sex\": \"male\",\n    \"email\": \"kucc@kucc.com.tw\",\n    \"password\": \"111111\"\n}",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1190,7 +1328,7 @@
 											}
 										},
 										"url": {
-											"raw": "https://stark-scrubland-08223.herokuapp.com/signup",
+											"raw": "https://stark-scrubland-08223.herokuapp.com/posts/{{ id }}",
 											"protocol": "https",
 											"host": [
 												"stark-scrubland-08223",
@@ -1198,19 +1336,29 @@
 												"com"
 											],
 											"path": [
-												"signup"
+												"posts",
+												"{{ id }}"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "取得使用者資訊",
+									"name": "刪除全部貼文",
 									"request": {
-										"method": "GET",
+										"method": "DELETE",
 										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
 										"url": {
-											"raw": "https://stark-scrubland-08223.herokuapp.com/users/{{ userID }}",
+											"raw": "https://stark-scrubland-08223.herokuapp.com/posts",
 											"protocol": "https",
 											"host": [
 												"stark-scrubland-08223",
@@ -1218,8 +1366,37 @@
 												"com"
 											],
 											"path": [
-												"users",
-												"{{ userID }}"
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新貼文",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\",\n    \"content\": \"222\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/posts/{{ id }}",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts",
+												"{{ id }}"
 											]
 										}
 									},
@@ -1230,7 +1407,7 @@
 					]
 				},
 				{
-					"name": "第六週 主線任務",
+					"name": "第六、七週 主線任務",
 					"item": [
 						{
 							"name": "local",
@@ -1396,6 +1573,45 @@
 											"path": [
 												"users",
 												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "上傳圖片",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTFlY2QzODdlNDFjM2MyMTNkZDdlOCIsImlhdCI6MTY1NDI0MzA0NCwiZXhwIjoxNjU0ODQ3ODQ0fQ.XZ0vw_UYQUx24ZasXtxr04_-cNUFctuuwxk1e1dYa_s",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "",
+													"type": "file",
+													"src": "/Users/kucc/Pictures/300_300.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:3005/upload",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"upload"
 											]
 										}
 									},
@@ -1572,6 +1788,46 @@
 											"path": [
 												"users",
 												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "上傳圖片",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTliNTk4MDUwOTg0Mzc3MmNmOTNkNyIsImlhdCI6MTY1NDI0NzU4MywiZXhwIjoxNjU0ODUyMzgzfQ.joXGLsl9eUXCkpYfPJlOmnwnEJFcl2Wh3H_OXkuplxc",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "",
+													"type": "file",
+													"src": []
+												}
+											]
+										},
+										"url": {
+											"raw": "https://still-spire-13553.herokuapp.com/upload",
+											"protocol": "https",
+											"host": [
+												"still-spire-13553",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"upload"
 											]
 										}
 									},
