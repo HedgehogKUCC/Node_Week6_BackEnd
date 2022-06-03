@@ -7,6 +7,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
+const uploadRouter = require('./routes/upload');
 
 const app = express();
 require('./connections/mongoDB');
@@ -28,6 +29,7 @@ process.on('uncaughtException', err => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
+app.use('/upload', uploadRouter);
 
 app.use((req, res, next) => {
     const error = new Error('無此路由');
